@@ -4,27 +4,45 @@ public class FractionList {
     private int arrayLength = 100;
     private Object[] aFraction = new Object[arrayLength];
 
-    public void add(Object shape) {
-        aFraction[numElements++] = shape;
+    public void add(Object fraction) {
+        aFraction[numElements++] = fraction;
     }
+
+
+    public String get(int index) {
+        String retVal = "";
+        retVal += aFraction[index];
+        return retVal;
+    }
+
 
     @Override
     public String toString() {
         String retVal = "";
         for(int i = 0; i < numElements; i++) {
             retVal += aFraction[i];
-            System.out.println("");
+            retVal += " ";
+            
         }
         return retVal;
     }
 
-    public void lengthCheck(Object[] aFraction) {
+    public boolean lengthCheck(Object[] aFraction) {
         if (aFraction[arrayLength] != null) {
-            arrayLength += 50;
-        } 
+            return true;
+        } else {
+            return false;
+        }
 
+    }
+
+    public int getNumElements() {
+        return this.numElements;
+    }
+
+    public int getArrayLength() {
+        return this.arrayLength;
     }
 
 
 }
-
