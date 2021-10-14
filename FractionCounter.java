@@ -26,4 +26,15 @@ public class FractionCounter {
             "}";
     }
 
+
+    public Fraction getTheFraction() {
+        return this.theFraction;
+    }
+
+
+    public int getTheCounter() {
+        return this.theCounter;
+    }
+
+
 }

@@ -22,6 +22,20 @@ public class Fraction {
 
     }
 
+        // GCD and asFraction methods were created by stackoverflow user "Bohemian". Link to post with his answer (He is the top reply): https://stackoverflow.com/questions/6618994/simplifying-fractions-in-java
+    // minor edits made to fit my program
+
+    /** @return the greatest common denominator */
+public int gcd(int a, int b) {
+    return b == 0 ? a : gcd(b, a % b);
+}
+
+public Fraction asFraction(int a, int b) {
+    int gcd = gcd(a, b);
+    Fraction tempFrac = new Fraction( (a / gcd) , (b / gcd));
+    return tempFrac;
+}
+
 
     @Override
     public String toString() {
@@ -31,18 +45,7 @@ public class Fraction {
             "}";
     }
 
-    // GCD and asFraction methods were created by stackoverflow user "Bohemian". Link to post with his answer (He is the top reply): https://stackoverflow.com/questions/6618994/simplifying-fractions-in-java
-    // minor edits made to fit my program
 
-    /** @return the greatest common denominator */
-public int gcd(int a, int b) {
-    return b == 0 ? a : gcd(b, a % b);
-}
-
-public String asFraction(int a, int b) {
-    int gcd = gcd(a, b);
-    return (a / gcd) + "/" + (b / gcd);
-}
 
 
 

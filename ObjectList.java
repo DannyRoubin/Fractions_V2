@@ -1,4 +1,4 @@
-public class FractionList {
+public class ObjectList {
 
     private int numElements = 0;
     private int arrayLength = 100;
@@ -9,11 +9,12 @@ public class FractionList {
     }
 
 
-    public String get(int index) {
+    public Object get(int index) {
         String retVal = "";
         retVal += aFraction[index];
         return retVal;
     }
+
 
 
     @Override
