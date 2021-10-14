@@ -27,13 +27,10 @@ public class Driver {
         }
 
         ObjectList uniqueList = new ObjectList();
-        int indexTracker = 0;
-        int[] uniqueArrayCounter = new int[uniqueList.getArrayLength()];
 
         while (fileData.hasNext()) {
             String tempHolder1;
             String[] tempArray1 = new String [1]; 
-            int whileLoopCounter = 0;
             Fraction tempFraction1;
 
             tempHolder1 = fileData.next();
@@ -41,25 +38,58 @@ public class Driver {
 
             tempFraction1 = new Fraction(Integer.parseInt(tempArray1[0]), Integer.parseInt(tempArray1[1]));
             tempFraction1 = tempFraction1.asFraction(tempFraction1.getNumerator(), tempFraction1.getDenominator());
-            System.out.println("Temp frac 1 = " + tempFraction1);
+            System.out.println("tempFraction1 numerator = " + tempFraction1.getNumerator());
+            System.out.println("tempFraction1 denominator = " + tempFraction1.getDenominator());
+
+            if ( tempFraction1.getNumerator() == 0 || tempFraction1.getDenominator() == 0 ) {
+                System.out.println("Get kicked ");
+            } else {
+            System.out.println("Temp frac 1 = " + tempFraction1.toString());
 
             for (int i = 0; i <  uniqueList.getNumElements(); i++) {
-
+                int currentNumElm = uniqueList.getNumElements();
+                System.out.println(" The current i index is " + i );
+                System.out.println(" The current getNumElement is " + uniqueList.getNumElements() );
+                FractionCounter uniqueTempFraction2 =  (FractionCounter) uniqueList.get(i);
+                System.out.println("Current unique list fraction " + uniqueTempFraction2);
+                if (uniqueTempFraction2.compareAndIncrement(tempFraction1)) {
+                    i = uniqueList.getNumElements();
+                    System.out.println("Exiting the for loop due to copy");
+                // } else if (uniqueTempFraction2.compareAndIncrement(tempFraction1) == false &&  uniqueList.getNumElements() == 2 ) {
+                //     i++;
+                // } else if (uniqueTempFraction2.compareAndIncrement(tempFraction1) == false &&  uniqueList.getNumElements() == 2 && i ==1) {
+                //     FractionCounter uniqueCounter = new FractionCounter(tempFraction1);
+                //     uniqueCounter.setTheCounter(1);
+                //     uniqueList.add(uniqueCounter);
+                //     System.out.println("Exiting the for loop due to new unique");
+                //     i = uniqueList.getNumElements();
+                // } else if (uniqueTempFraction2.compareAndIncrement(tempFraction1) == false &&  ( (i + 2) - (uniqueList.getNumElements()) != 1 ) &&  uniqueList.getNumElements() != 2  ) {
+                //     i++;
+            } else if (uniqueTempFraction2.compareAndIncrement(tempFraction1) == false &&  uniqueList.get(currentNumElm + 1) != null ) {
+                System.out.println("In new loop");
+                i++;
+                } else {
+                    FractionCounter uniqueCounter = new FractionCounter(tempFraction1);
+                    uniqueCounter.setTheCounter(1);
+                    uniqueList.add(uniqueCounter);
+                    System.out.println("Exiting the for loop due to new unique");
+                    i = uniqueList.getNumElements();
+                }
             }
+            System.out.println("Leaving for loop");
 
             if (uniqueList.getNumElements() == 0 ) {
                         FractionCounter uniqueCounter = new FractionCounter(tempFraction1);
+                        uniqueCounter.setTheCounter(1);
                         uniqueList.add(uniqueCounter);
                         System.out.println("Here is the uniquelist to string and it should only show a single value" + uniqueList.toString());
                     }
+                }
 
-
-            // for (int i = 0; i < uniqueList.getNumElements(); i++) {
-                //                 FractionCounter uniqueTempFraction3 = (FractionCounter) uniqueList.get(i);
-                                
-        
-                //                 if (uniqueTempFraction3.compareAndIncrement(uniqueTempFraction));
-                //             }
+            
+        }
+        for (int i = 0; i < uniqueList.getNumElements(); i++) {
+            System.out.println("Final results for index " + i + ": " + uniqueList.get(i));
         }
       
        

@@ -10,9 +10,7 @@ public class ObjectList {
 
 
     public Object get(int index) {
-        String retVal = "";
-        retVal += aFraction[index];
-        return retVal;
+        return aFraction[index];
     }
 
 

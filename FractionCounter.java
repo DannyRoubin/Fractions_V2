@@ -35,6 +35,10 @@ public class FractionCounter {
     public int getTheCounter() {
         return this.theCounter;
     }
+   
+    public void setTheCounter(int theCounter) {
+        this.theCounter = theCounter;
+    }
 
 
 }
